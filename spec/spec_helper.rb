@@ -1,10 +1,13 @@
+p ENV
 if ENV['CIRCLE_ARTIFACTS']
   require 'simplecov'
   dir = File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage")
   SimpleCov.coverage_dir(dir)
+  puts 'yes'
 else
   require 'simplecov'
   SimpleCov.start 'rails'
+  puts 'no'
 end
 
 ENV['RAILS_ENV'] = 'test'
